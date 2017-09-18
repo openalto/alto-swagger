@@ -1,0 +1,45 @@
+Request:
+  properties:
+    constraints:
+      $ref: "basic.yaml#/Constraints"
+    cost-type:
+      $ref: "basic.yaml#/CostType"
+    endpoints:
+      id: /properties/endpoints
+      properties:
+        dsts:
+          $ref: "basic.yaml#/Endpoints"
+        srcs:
+          $ref: "basic.yaml#/Endpoints"
+      required:
+      - srcs
+      - dsts
+      type: object
+  required:
+  - cost-type
+  - endpoints
+  type: object
+Response:
+  properties:
+    endpoint-cost-map:
+      id: /properties/endpoint-cost-map
+      patternProperties:
+        ^(ipv4:(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(ipv6:((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[a-zA-Z0-9]+)?)|(ipv6:(([^:]+:){6}(([^:]+:[^:]+)|(.*\\..*)))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)(%.+)?;)$:
+          id: /properties/endpoint-cost-map/partternProperties/src
+          patternProperties:
+            ^(ipv4:(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(ipv6:((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[a-zA-Z0-9]+)?)|(ipv6:(([^:]+:){6}(([^:]+:[^:]+)|(.*\\..*)))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)(%.+)?;)$:
+              id: /properties/endpoint-cost-map/patternProperties/src/patternProperties/dst
+          type: object
+      type: object
+    meta:
+      id: /properties/meta
+      properties:
+        cost-type:
+          $ref: "basic.yaml#/CostType"
+      required:
+      - cost-type
+      type: object
+  required:
+  - meta
+  - endpoint-cost-map
+  type: object

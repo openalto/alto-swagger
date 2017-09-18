@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://alto.example.com/multicost-costmap-response.json",
+  "properties": {
+    "cost-map": {
+      "id": "/properties/cost-map",
+      "patternProperties": {
+        "^[0-9a-zA-Z-:@_\\.]{1,64}$": {
+          "id": "/properties/cost-map/patternProperties/src-pid",
+          "patternProperties": {
+            "^[0-9a-zA-Z-:@_\\.]{1,64}$": {
+              "id": "/properties/cost-map/patternProperties/src-pid/patternProperties/dst-pid"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "cost-type": {
+      "id": "/properties/cost-type",
+      "properties": {},
+      "type": "object"
+    },
+    "meta": {
+      "id": "/properties/meta",
+      "properties": {
+        "dependent-vtags": {
+          "id": "/properties/meta/properties/dependent-vtags",
+          "items": {
+            "id": "/properties/meta/properties/dependent-vtags/items",
+            "properties": {
+              "resource-id": {
+                "id": "/properties/meta/properties/dependent-vtags/items/properties/resource-id",
+                "type": "string"
+              },
+              "tag": {
+                "id": "/properties/meta/properties/dependent-vtags/items/properties/tag",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "vtag": {
+          "id": "/properties/meta/properties/vtag",
+          "items": {
+            "id": "/properties/meta/properties/vtag/items",
+            "properties": {
+              "query-id": {
+                "id": "/properties/meta/properties/vtag/items/properties/query-id",
+                "type": "string"
+              },
+              "resource-id": {
+                "id": "/properties/meta/properties/vtag/items/properties/resource-id",
+                "type": "string"
+              },
+              "tag": {
+                "id": "/properties/meta/properties/vtag/items/properties/tag",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "multi-cost-types": {
+      "id": "/properties/multi-cost-types",
+      "items": {
+        "id": "/properties/multi-cost-types/items",
+        "properties": {
+          "cost-metric": {
+            "id": "/properties/multi-cost-types/items/properties/cost-metric",
+            "type": "string"
+          },
+          "cost-mode": {
+            "id": "/properties/multi-cost-types/items/properties/cost-mode",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

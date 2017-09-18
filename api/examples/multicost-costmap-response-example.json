@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "dependent-vtags": [
+      {
+        "resource-id": "default-network-map",
+        "tag": "75ed013b3cb58f896e839582504f622838ce670f"
+      }
+    ],
+    "vtag": [
+      {
+        "resource-id": "filtered-multi-cost-map",
+        "tag": "27612897acf278ffu3287c284dd28841da78213",
+        "query-id": "query1"
+      }
+    ]
+  },
+  "cost-type": {},
+  "multi-cost-types": [
+    {
+      "cost-mode": "path-vector",
+      "cost-metric": "ane"
+    },
+    {
+      "cost-mode": "numerical",
+      "cost-metric": "routingcost"
+    }
+  ],
+  "cost-map": {
+    "PID1": {
+      "PID2": [
+        [
+          "ane:L001",
+          "ane:L003"
+        ],
+        55
+      ]
+    },
+    "PID2": {
+      "PID3": [
+        [
+          "ane:L003",
+          "ane:L004"
+        ],
+        60
+      ]
+    }
+  }
+}

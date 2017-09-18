@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "cost-type": {
+      "cost-mode": "ordinal",
+      "cost-metric": "routingcost"
+    }
+  },
+  "endpoint-cost-map": {
+    "ipv4:192.0.2.2": {
+      "ipv4:192.0.2.89": 1,
+      "ipv4:198.51.100.34": 2,
+      "ipv4:203.0.113.45": 3
+    }
+  }
+}

@@ -1,0 +1,55 @@
+Vtag:
+  id: /alto/meta/properties/vtag
+  properties:
+    resource-id:
+      id: /alto/meta/properties/vtag/properties/resource-id
+      type: string
+    tag:
+      id: /alto/meta/properties/vtag/properties/tag
+      type: string
+  required:
+  - resource-id
+  - tag
+  type: object
+DependentVtags:
+  id: /alto/meta/properties/dependent-vtags
+  items:
+    $ref: "#/Vtag"
+  type: array
+Pid:
+  id: /alto/types/pid
+  pattern: ^[0-9a-zA-Z-:@_\.]{1,64}$
+  type: string
+Pids:
+  id: /alto/types/pids
+  items:
+    $ref: "#/Pid"
+  type: array
+CostType:
+  id: /alto/types/cost-type
+  properties:
+    cost-metric:
+      id: /alto/types/cost-type/properties/cost-metric
+      type: string
+    cost-mode:
+      id: /alto/types/cost-type/properties/cost-mode
+      type: string
+  required:
+  - cost-mode
+  - cost-metric
+  type: object
+Constraints:
+  id: /alto/types/constraints
+  items:
+    id: /alto/types/constraints/items
+    type: string
+  type: array
+TypedEndpointAddr:
+  id: /alto/types/typed-endpoint-address
+  pattern: ^(ipv4:(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|(ipv6:((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(%[a-zA-Z0-9]+)?)|(ipv6:(([^:]+:){6}(([^:]+:[^:]+)|(.*\..*)))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)(%.+)?;)$
+  type: string
+Endpoints:
+  id: /alto/types/endpoints
+  items:
+    $ref: "#/TypedEndpointAddr"
+  type: array

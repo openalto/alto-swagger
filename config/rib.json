@@ -1,0 +1,12 @@
+{
+  "bgp-rib": [
+    {
+      "next": {
+        "domain": "domain-b",
+        "ingress": "openflow:2:1"
+      },
+      "dest": "10.0.1.0/24",
+      "ingress": "openflow:1:1"
+    }
+  ]
+}

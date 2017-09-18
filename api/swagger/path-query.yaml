@@ -1,0 +1,10 @@
+Request:
+  id: http://alto.example.com/path-query-request.json
+  items:
+    type: object
+  type: array
+Response:
+  id: http://alto.example.com/path-query-response.json
+  items:
+    type: object
+  type: array

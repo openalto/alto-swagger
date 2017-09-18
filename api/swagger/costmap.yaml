@@ -1,0 +1,47 @@
+Request:
+  properties:
+    constraints:
+      $ref: "basic.yaml#/Constraints"
+    cost-type:
+      $ref: "basic.yaml#/CostType"
+    pids:
+      properties:
+        srcs:
+          $ref: "basic.yaml#/Pids"
+        dsts:
+          $ref: "basic.yaml#/Pids"
+      required:
+      - srcs
+      - dsts
+      type: object
+  required:
+  - cost-type
+  - pids
+  type: object
+Response:
+  properties:
+    meta:
+      id: /properties/meta
+      properties:
+        cost-type:
+          $ref: "basic.yaml#/CostType"
+        dependent-vtags:
+          $ref: "basic.yaml#/DependentVtags"
+      required:
+      - dependent-vtags
+      - cost-type
+      type: object
+    cost-map:
+      id: /properties/cost-map
+      patternProperties:
+        ^[0-9a-zA-Z-:@_\.]{1,64}$:
+          id: /properties/cost-map/patternProperties/src
+          patternProperties:
+            ^[0-9a-zA-Z-:@_\.]{1,64}$:
+              id: /properties/cost-map/patternProperties/src/patternProperties/dst
+          type: object
+      type: object
+  required:
+  - meta
+  - cost-map
+  type: object

@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://alto.example.com/multicost-costmap-request.json",
+  "properties": {
+    "multi-cost-types": {
+      "id": "/properties/multi-cost-types",
+      "items": {
+        "id": "/properties/multi-cost-types/items",
+        "properties": {
+          "cost-metric": {
+            "id": "/properties/multi-cost-types/items/properties/cost-metric",
+            "type": "string"
+          },
+          "cost-mode": {
+            "id": "/properties/multi-cost-types/items/properties/cost-mode",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "or-constraints": {
+      "id": "/properties/or-constraints",
+      "items": {
+        "id": "/properties/or-constraints/items",
+        "items": {
+          "id": "/properties/or-constraints/items/items",
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "type": "array"
+    },
+    "pid-flows": {
+      "id": "/properties/pid-flows",
+      "items": {
+        "id": "/properties/pid-flows/items",
+        "properties": {
+          "dst": {
+            "id": "/properties/pid-flows/items/properties/dst",
+            "type": "string"
+          },
+          "src": {
+            "id": "/properties/pid-flows/items/properties/src",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "testable-cost-types": {
+      "id": "/properties/testable-cost-types",
+      "items": {
+        "id": "/properties/testable-cost-types/items",
+        "properties": {
+          "cost-metric": {
+            "id": "/properties/testable-cost-types/items/properties/cost-metric",
+            "type": "string"
+          },
+          "cost-mode": {
+            "id": "/properties/testable-cost-types/items/properties/cost-mode",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

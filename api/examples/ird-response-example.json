@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "cost-types": {
+      "num-routing": {
+        "cost-mode": "numerical",
+        "cost-metric": "routingcost",
+        "description": "My default"
+      },
+      "num-hop": {
+        "cost-mode": "numerical",
+        "cost-metric": "hopcount"
+      },
+      "ord-routing": {
+        "cost-mode": "ordinal",
+        "cost-metric": "routingcost"
+      },
+      "ord-hop": {
+        "cost-mode": "ordinal",
+        "cost-metric": "hopcount"
+      }
+    },
+    "default-alto-network-map": "my-default-network-map"
+  },
+  "resources": {
+    "my-default-network-map": {
+      "uri": "http://alto.example.com/networkmap",
+      "media-type": "application/alto-networkmap+json"
+    },
+    "numerical-routing-cost-map": {
+      "uri": "http://alto.example.com/costmap/num/routingcost",
+      "media-type": "application/alto-costmap+json",
+      "capabilities": {
+        "cost-type-names": [
+          "num-routing"
+        ]
+      },
+      "uses": [
+        "my-default-network-map"
+      ]
+    },
+    "numerical-hopcount-cost-map": {
+      "uri": "http://alto.example.com/costmap/num/hopcount",
+      "media-type": "application/alto-costmap+json",
+      "capabilities": {
+        "cost-type-names": [
+          "num-hop"
+        ]
+      },
+      "uses": [
+        "my-default-network-map"
+      ]
+    },
+    "custom-maps-resources": {
+      "uri": "http://custom.alto.example.com/maps",
+      "media-type": "application/alto-directory+json"
+    },
+    "endpoint-property": {
+      "uri": "http://alto.example.com/endpointprop/lookup",
+      "media-type": "application/alto-endpointprop+json",
+      "accepts": "application/alto-endpointpropparams+json",
+      "capabilities": {
+        "prop-types": [
+          "my-default-network-map.pid",
+          "priv:ietf-example-prop"
+        ]
+      }
+    },
+    "endpoint-cost": {
+      "uri": "http://alto.example.com/endpointcost/lookup",
+      "media-type": "application/alto-endpointcost+json",
+      "accepts": "application/alto-endpointcostparams+json",
+      "capabilities": {
+        "cost-constraints": true,
+        "cost-type-names": [
+          "num-routing",
+          "num-hop",
+          "ord-routing",
+          "ord-hop"
+        ]
+      }
+    }
+  }
+}

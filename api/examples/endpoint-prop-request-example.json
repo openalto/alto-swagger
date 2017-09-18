@@ -1,0 +1,11 @@
+{
+  "properties": [
+    "my-default-networkmap.pid",
+    "priv:ietf-example-prop"
+  ],
+  "endpoints": [
+    "ipv4:192.0.2.34",
+    "ipv4:203.0.113.129",
+    "ipv6:2001:db8:0:1::"
+  ]
+}
