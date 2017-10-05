@@ -1,0 +1,193 @@
+swagger: "2.0"
+info:
+  version: "0.1.0"
+  title: Example ALTO Server
+license:
+  name: MIT
+  url: https://opensource.org/licenses/MIT
+contact:
+  name: SNLab.Org
+  url: https://snlab.github.io/
+  email: snlab.org@gmail.com
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /networkmap/{resourceId}:
+    parameters:
+    - name: resourceId
+      in: path
+      description: ID of networkmap to fetch
+      required: true
+      type: string
+    get:
+      description: Returns the networkmap by given resource id
+      operationId: networkmap
+      produces:
+      - application/alto-networkmap+json
+      - application/alto-error+json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/networkmap.yaml#/Response"
+        default:
+          description: Error
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"
+    post:
+      description: Reterns the networkmap data by given resource id and a filter
+      operationId: networkmap
+      consumes:
+      - application/alto-networkmapfilter+json
+      produces:
+      - application/alto-networkmap+json
+      - application/alto-error+json
+      parameters:
+      - name: filter
+        in: body
+        description: Specifies the filtering parameters as ReqFilteredNetworkmap defined in Sec 11.3.1.3. of RFC7285
+        required: true
+        schema:
+          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/networkmap.yaml#/Request"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/networkmap.yaml#/Response"
+        default:
+          description: Error
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"
+  /costmap/{resourceId}:
+    parameters:
+    - name: resourceId
+      in: path
+      description: ID of costmap to fetch
+      required: true
+      type: string
+    get:
+      description: Returns the costmap by given resource id
+      operationId: costmap
+      produces:
+      - application/alto-costmap+json
+      - application/alto-error+json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/costmap.yaml#/Response"
+        default:
+          description: Error
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"
+    post:
+      description: Reterns the costmap data by given resource id and a filter
+      operationId: costmap
+      consumes:
+      - application/alto-costmapfilter+json
+      produces:
+      - application/alto-costmap+json
+      - application/alto-error+json
+      parameters:
+      - name: filter
+        in: body
+        description: Specifies the filtering parameters as ReqFilteredCostmap defined in Sec 11.3.2.3. of RFC7285
+        required: true
+        schema:
+          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/costmap.yaml#/Request"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/costmap.yaml#/Response"
+        default:
+          description: Error
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"
+  /endpointcost/{resourceId}:
+    parameters:
+    - name: resourceId
+      in: path
+      description: ID of endpoint cost service to lookup
+      required: true
+      type: string
+    post:
+      description: Provides information about costs between individual endpoints
+      operationId: endpointcost
+      consumes:
+      - application/alto-endpointcostparams+json
+      produces:
+      - application/alto-endpointcost+json
+      - application/alto-error+json
+      parameters:
+      - name: filter
+        in: body
+        description: Specifies the filtering parameters as ReqEndpointCostMap defined in Sec 11.5.1.3. of RFC7285
+        required: true
+        schema:
+          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/endpointcost.yaml#/Request"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/endpointcost.yaml#/Response"
+        default:
+          description: Error
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"
+  /endpointprop/{resourceId}:
+    x-swagger-router-controller: alto
+    parameters:
+    - name: resourceId
+      in: path
+      description: ID of endpoint property service to lookup
+      required: true
+      type: string
+    post:
+      description: Provides information about endpoint properties
+      operationId: endpointprop
+      consumes:
+      - application/alto-endpointpropparams+json
+      produces:
+      - application/alto-endpointprop+json
+      - application/alto-error+json
+      parameters:
+      - name: filter
+        in: body
+        description: Specifies the filtering parameters as ReqEndpointProp defined in Sec 11.4.1.3. of RFC7285
+        required: true
+        schema:
+          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/endpointproperty.yaml#/Request"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/endpointproperty.yaml#/Response"
+        default:
+          description: Error
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"
+  /directory:
+    get:
+      description: Returns the costmap by given resource id
+      operationId: directory
+      produces:
+      - application/alto-directory+json
+      - application/alto-error+json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ird.yaml#/Response"
+        default:
+          description: Error
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"

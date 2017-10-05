@@ -1,0 +1,25 @@
+ResourceProperty:
+  required:
+  - availbw
+  properties:
+    availbw:
+      type: integer
+ResourceQueryRequest:
+  required:
+  - queries
+  properties:
+    queries:
+      type: array
+      items:
+        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/basic.yaml#/QueryDesc"
+ResourceQueryResponse:
+  required:
+    - ane-paths
+    - ane-property
+  properties:
+    ane-paths:
+      $ref: "#/VectorArray"
+    ane-property:
+      type: array
+      items:
+        $ref: "#/ResourceProperty"

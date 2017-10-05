@@ -1,0 +1,50 @@
+Request:
+  id: http://alto.example.com/networkmap-request.json
+  properties:
+    address-types:
+      id: /properties/address-types
+      items:
+        enum:
+        - ipv4
+        - ipv6
+        id: /properties/address-types/items
+      type: array
+    pids:
+      $ref: "basic.yaml#/Pids"
+  required:
+  - pids
+  type: object
+Response:
+  properties:
+    meta:
+      id: /properties/meta
+      properties:
+        vtag:
+          $ref: "basic.yaml#/Vtag"
+      required:
+      - vtag
+      type: object
+    network-map:
+      id: /properties/network-map
+      patternProperties:
+        ^[0-9a-zA-Z-:@_\.]{1,64}$:
+          id: /properties/network-map/patternProperties/pid
+          properties:
+            ipv4:
+              id: /properties/network-map/patternProperties/pid/properties/ipv4
+              items:
+                id: /properties/network-map/patternProperties/pid/properties/ipv4/items
+                type: string
+              type: array
+            ipv6:
+              id: /properties/network-map/patternProperties/pid/properties/ipv6
+              items:
+                id: /properties/network-map/patternProperties/pid/properties/ipv6/items
+                type: string
+              type: array
+          type: object
+      type: object
+  required:
+  - meta
+  - network-map
+  type: object

@@ -1,0 +1,24 @@
+FlowSpec:
+  required:
+  - srcIP
+  - dstIP
+  properties:
+    srcIP:
+      $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Ipv4Addr"
+    dstIP:
+      $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Ipv4Addr"
+QueryDesc:
+  required:
+  - flow
+  - ingress-point
+  properties:
+    flow:
+      $ref: "#/FlowSpec"
+    ingress-point:
+      $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Ipv4Addr"
+VectorArray:
+  type: array
+  items:
+    type: array
+    items:
+      type: integer

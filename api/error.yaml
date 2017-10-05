@@ -1,0 +1,16 @@
+Error:
+  properties:
+    meta:
+      properties:
+        code:
+          enum:
+          - E_SYNTAX
+          - E_MISSING_FIELD
+          - E_INVALID_FIELD_TYPE
+          - E_INVALID_FIELD_VALUE
+        message:
+          description: Provides the details of the error
+          type: string
+      required:
+      - code
+      type: object

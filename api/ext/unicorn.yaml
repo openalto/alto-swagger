@@ -1,0 +1,66 @@
+swagger: "2.0"
+info:
+  version: "0.1.0"
+  title: Example Unicorn Server (An ALTO Extension)
+license:
+  name: MIT
+  url: https://opensource.org/licenses/MIT
+contact:
+  name: SNLab.Org
+  url: https://snlab.github.io/
+  email: snlab.org@gmail.com
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /ext/query/path:
+    post:
+      description: Make a recursive path query
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: queries
+        required: true
+        schema:
+          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/path-query.yaml#/PathQueryRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/path-query.yaml#/PathQueryResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"
+  /ext/query/resource:
+    post:
+      description: Returns resource state abstraction in simple mode
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: flows
+        in: body
+        required: true
+        schema:
+          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/resource-query.yaml#/ResourceQueryRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/resource-query.yaml#/ResourceQueryResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"

@@ -1,0 +1,16 @@
+PathQueryRequest:
+  required:
+  - queries
+  properties:
+    queries:
+      type: array
+      items:
+        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/basic.yaml#/QueryDesc"
+PathQueryResponse:
+  required:
+  - ingress-point-paths
+  properties:
+    ingress-point-paths:
+      type: array
+      items:
+        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Ipv4Addr"
