@@ -1,0 +1,70 @@
+swagger: "2.0"
+info:
+  description: "The API for path query"
+  title: "ALTO Path Query"
+  version: "0.1.0"
+paths:
+  /pathquery:
+    post:
+      description: "Make a recursive path query"
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: "#/definitions/PathQueryRequest"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/PathQueryResponse"
+
+definitions:
+  Ipv4Addr:
+    #id: /alto/pathquery/types/ipv4addr
+    type: string
+    pattern: ^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$
+  FlowDesc:
+    #id: /alto/pathquery/types/flowdesc
+    properties:
+      src:
+        #id: /alto/pathquery/flowdesc/src
+        $ref: "#/definitions/Ipv4Addr"
+      dst:
+        #id: /alto/pathquery/flowdesc/dst
+        $ref: "#/definitions/Ipv4Addr"
+      ingress:
+        #id: /alto/pathquery/flowdesc/ingress
+        type: string
+  PathProperty:
+    properties:
+      id:
+        type: string
+      next-hop-as:
+        type: string
+      ingress-port:
+        type: string
+      availbw:
+        type: integer
+  PathQueryRequest:
+    properties:
+      flows:
+        type: array
+        items:
+          $ref: "#/definitions/FlowDesc"
+  PathQueryResponse:
+    properties:
+      flow-paths:
+        type: array
+        items:
+          type: array
+          items:
+            type: string
+      property-map:
+        type: array
+        items:
+          $ref: "#/definitions/PathProperty"
