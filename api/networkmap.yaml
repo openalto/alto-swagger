@@ -17,6 +17,7 @@ definitions:
       address-types:
         id: /properties/address-types
         items:
+          type: string
           enum:
           - ipv4
           - ipv6
