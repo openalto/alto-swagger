@@ -21,6 +21,7 @@ produces:
   - application/json
 paths:
   /ext/query/path:
+    operationId: queryPath
     post:
       description: Make a recursive path query
       consumes:
@@ -43,6 +44,7 @@ paths:
           schema:
             $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/definitions/Error"
   /ext/query/resource:
+    operationId: queryResource
     post:
       description: Returns resource state abstraction in simple mode
       consumes:

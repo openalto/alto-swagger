@@ -17,9 +17,11 @@ definitions:
     - dstIP
     properties:
       srcIP:
-        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/Ipv4Addr"
+        type: string
+        pattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$
       dstIP:
-        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/Ipv4Addr"
+        type: string
+        pattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$
   QueryDesc:
     required:
     - flow
@@ -28,7 +30,8 @@ definitions:
       flow:
         $ref: "#/definitions/FlowSpec"
       ingress-point:
-        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/Ipv4Addr"
+        type: string
+        pattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$
   VectorArray:
     type: array
     items:
