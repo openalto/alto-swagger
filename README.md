@@ -3,6 +3,8 @@
 > **NOTE:** Current specification is based on OpenAPI 2.0. We are planning to
 > migrate the specification to OpenAPI 3.0 once the swagger 3.0.0 is released.
 
+[![Travis status](https://img.shields.io/travis/openalto/alto-swagger/spec.svg)](https://travis-ci.org/openalto/alto-swagger)
+
 - [api/alto.yaml](https://github.com/openalto/alto-swagger/raw/spec/api/alto.yaml) is
   the entry swagger file of standard ALTO protocol
   ([RFC7285](https://tools.ietf.org/html/rfc7285)).
