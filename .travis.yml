@@ -3,8 +3,9 @@ language: java
 jdk:
 - oraclejdk8
 env:
-- SWAGGER_VERSION=2.2.3
-- ENTRIES="api/alto.yaml api/ext/unicorn.yaml"
+  global:
+  - SWAGGER_VERSION=2.2.3
+  - ENTRIES="api/alto.yaml api/ext/unicorn.yaml"
 
 install:
   - wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/${SWAGGER_VERSION}/swagger-codegen-cli-${SWAGGER_VERSION}.jar -q -O swagger-codegen-cli.jar;
