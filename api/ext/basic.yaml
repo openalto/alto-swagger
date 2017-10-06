@@ -1,24 +1,37 @@
-FlowSpec:
-  required:
-  - srcIP
-  - dstIP
-  properties:
-    srcIP:
-      $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Ipv4Addr"
-    dstIP:
-      $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Ipv4Addr"
-QueryDesc:
-  required:
-  - flow
-  - ingress-point
-  properties:
-    flow:
-      $ref: "#/FlowSpec"
-    ingress-point:
-      $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Ipv4Addr"
-VectorArray:
-  type: array
-  items:
+swagger: "2.0"
+info:
+  version: "0.1.0"
+  title: Basic Data Type of Unicorn
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  contact:
+    name: SNLab.Org
+    url: https://snlab.github.io/
+    email: snlab.org@gmail.com
+paths: {}
+definitions:
+  FlowSpec:
+    required:
+    - srcIP
+    - dstIP
+    properties:
+      srcIP:
+        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/Ipv4Addr"
+      dstIP:
+        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/Ipv4Addr"
+  QueryDesc:
+    required:
+    - flow
+    - ingress-point
+    properties:
+      flow:
+        $ref: "#/definitions/FlowSpec"
+      ingress-point:
+        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/Ipv4Addr"
+  VectorArray:
     type: array
     items:
-      type: integer
+      type: array
+      items:
+        type: integer

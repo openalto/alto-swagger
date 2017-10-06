@@ -1,50 +1,63 @@
-Request:
-  id: http://alto.example.com/networkmap-request.json
-  properties:
-    address-types:
-      id: /properties/address-types
-      items:
-        enum:
-        - ipv4
-        - ipv6
-        id: /properties/address-types/items
-      type: array
-    pids:
-      $ref: "basic.yaml#/Pids"
-  required:
-  - pids
-  type: object
-Response:
-  properties:
-    meta:
-      id: /properties/meta
-      properties:
-        vtag:
-          $ref: "basic.yaml#/Vtag"
-      required:
-      - vtag
-      type: object
-    network-map:
-      id: /properties/network-map
-      patternProperties:
-        ^[0-9a-zA-Z-:@_\.]{1,64}$:
-          id: /properties/network-map/patternProperties/pid
-          properties:
-            ipv4:
-              id: /properties/network-map/patternProperties/pid/properties/ipv4
-              items:
-                id: /properties/network-map/patternProperties/pid/properties/ipv4/items
-                type: string
-              type: array
-            ipv6:
-              id: /properties/network-map/patternProperties/pid/properties/ipv6
-              items:
-                id: /properties/network-map/patternProperties/pid/properties/ipv6/items
-                type: string
-              type: array
-          type: object
-      type: object
-  required:
-  - meta
-  - network-map
-  type: object
+swagger: "2.0"
+info:
+  version: "0.1.0"
+  title: NetworkMap Type of ALTO
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  contact:
+    name: SNLab.Org
+    url: https://snlab.github.io/
+    email: snlab.org@gmail.com
+paths: {}
+definitions:
+  Request:
+    id: http://alto.example.com/networkmap-request.json
+    properties:
+      address-types:
+        id: /properties/address-types
+        items:
+          enum:
+          - ipv4
+          - ipv6
+          id: /properties/address-types/items
+        type: array
+      pids:
+        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/Pids"
+    required:
+    - pids
+    type: object
+  Response:
+    properties:
+      meta:
+        id: /properties/meta
+        properties:
+          vtag:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/Vtag"
+        required:
+        - vtag
+        type: object
+      network-map:
+        id: /properties/network-map
+        patternProperties:
+          ^[0-9a-zA-Z-:@_\.]{1,64}$:
+            id: /properties/network-map/patternProperties/pid
+            properties:
+              ipv4:
+                id: /properties/network-map/patternProperties/pid/properties/ipv4
+                items:
+                  id: /properties/network-map/patternProperties/pid/properties/ipv4/items
+                  type: string
+                type: array
+              ipv6:
+                id: /properties/network-map/patternProperties/pid/properties/ipv6
+                items:
+                  id: /properties/network-map/patternProperties/pid/properties/ipv6/items
+                  type: string
+                type: array
+            type: object
+        type: object
+    required:
+    - meta
+    - network-map
+    type: object

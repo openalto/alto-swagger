@@ -1,16 +1,29 @@
-PathQueryRequest:
-  required:
-  - queries
-  properties:
-    queries:
-      type: array
-      items:
-        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/basic.yaml#/QueryDesc"
-PathQueryResponse:
-  required:
-  - ingress-point-paths
-  properties:
-    ingress-point-paths:
-      type: array
-      items:
-        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Ipv4Addr"
+swagger: "2.0"
+info:
+  version: "0.1.0"
+  title: Path Query Type of Unicorn
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  contact:
+    name: SNLab.Org
+    url: https://snlab.github.io/
+    email: snlab.org@gmail.com
+paths: {}
+definitions:
+  PathQueryRequest:
+    required:
+    - queries
+    properties:
+      queries:
+        type: array
+        items:
+          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/basic.yaml#/definitions/QueryDesc"
+  PathQueryResponse:
+    required:
+    - ingress-point-paths
+    properties:
+      ingress-point-paths:
+        type: array
+        items:
+          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/Ipv4Addr"

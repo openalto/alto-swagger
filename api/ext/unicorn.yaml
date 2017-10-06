@@ -32,16 +32,16 @@ paths:
         name: queries
         required: true
         schema:
-          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/path-query.yaml#/PathQueryRequest"
+          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/path-query.yaml#/definitions/PathQueryRequest"
       responses:
         200:
           description: Success
           schema:
-            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/path-query.yaml#/PathQueryResponse"
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/path-query.yaml#/definitions/PathQueryResponse"
         default:
           description: Error
           schema:
-            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/definitions/Error"
   /ext/query/resource:
     post:
       description: Returns resource state abstraction in simple mode
@@ -54,13 +54,13 @@ paths:
         in: body
         required: true
         schema:
-          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/resource-query.yaml#/ResourceQueryRequest"
+          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/resource-query.yaml#/definitions/ResourceQueryRequest"
       responses:
         200:
           description: Success
           schema:
-            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/resource-query.yaml#/ResourceQueryResponse"
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/resource-query.yaml#/definitions/ResourceQueryResponse"
         default:
           description: Error
           schema:
-            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/Error"
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/definitions/Error"

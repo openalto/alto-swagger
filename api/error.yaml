@@ -1,16 +1,30 @@
-Error:
-  properties:
-    meta:
-      properties:
-        code:
-          enum:
-          - E_SYNTAX
-          - E_MISSING_FIELD
-          - E_INVALID_FIELD_TYPE
-          - E_INVALID_FIELD_VALUE
-        message:
-          description: Provides the details of the error
-          type: string
-      required:
-      - code
-      type: object
+swagger: "2.0"
+info:
+  version: "0.1.0"
+  title: Error Type of ALTO
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  contact:
+    name: SNLab.Org
+    url: https://snlab.github.io/
+    email: snlab.org@gmail.com
+paths: {}
+definitions:
+  Error:
+    properties:
+      meta:
+        properties:
+          code:
+            type: string
+            enum:
+            - E_SYNTAX
+            - E_MISSING_FIELD
+            - E_INVALID_FIELD_TYPE
+            - E_INVALID_FIELD_VALUE
+          message:
+            description: Provides the details of the error
+            type: string
+        required:
+        - code
+        type: object

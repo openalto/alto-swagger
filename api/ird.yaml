@@ -1,42 +1,55 @@
-Response:
-  properties:
-    meta:
-      id: /properties/meta
-      properties:
-        cost-types:
-          additionalProperties:
-            $ref: "basic.yaml#/CostType"
-          id: /properties/meta/properties/cost-types
-          properties: {}
-          type: object
-        default-alto-network-map:
-          id: /properties/meta/properties/default-alto-network-map
-          type: string
-      type: object
-    resources:
-      additionalProperties:
+swagger: "2.0"
+info:
+  version: "0.1.0"
+  title: Information Resource Directory Type of ALTO
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  contact:
+    name: SNLab.Org
+    url: https://snlab.github.io/
+    email: snlab.org@gmail.com
+paths: {}
+definitions:
+  Response:
+    properties:
+      meta:
+        id: /properties/meta
         properties:
-          accepts:
-            id: /properties/resources/properties/resource/properties/accepts
-            type: string
-          capabilities:
-            id: /properties/resources/properties/resource/properties/capabilities
+          cost-types:
+            additionalProperties:
+              $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/CostType"
+            id: /properties/meta/properties/cost-types
             properties: {}
             type: object
-          media-type:
-            id: /properties/resources/properties/resource/properties/media-type
+          default-alto-network-map:
+            id: /properties/meta/properties/default-alto-network-map
             type: string
-          uri:
-            id: /properties/resources/properties/resource/properties/uri
-            type: string
-          uses:
-            id: /properties/resources/properties/resource/properties/uses
-            items:
-              id: /properties/resources/properties/resource/properties/uses/items
-              type: string
-            type: array
         type: object
-      id: /properties/resources
-      properties: {}
-      type: object
-  type: object
+      resources:
+        additionalProperties:
+          properties:
+            accepts:
+              id: /properties/resources/properties/resource/properties/accepts
+              type: string
+            capabilities:
+              id: /properties/resources/properties/resource/properties/capabilities
+              properties: {}
+              type: object
+            media-type:
+              id: /properties/resources/properties/resource/properties/media-type
+              type: string
+            uri:
+              id: /properties/resources/properties/resource/properties/uri
+              type: string
+            uses:
+              id: /properties/resources/properties/resource/properties/uses
+              items:
+                id: /properties/resources/properties/resource/properties/uses/items
+                type: string
+              type: array
+          type: object
+        id: /properties/resources
+        properties: {}
+        type: object
+    type: object
