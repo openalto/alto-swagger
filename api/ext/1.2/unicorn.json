@@ -1,0 +1,14 @@
+{
+  "swaggerVersion": "1.2",
+  "apiVersion": "0.1.1-oas1.2",
+  "info": {
+    "title": "Unicorn API",
+    "description": "Cross-domain path and resource discovery"
+  },
+  "apis": [
+    {
+      "path": "/query.json",
+      "description": "Operations about path query and resource query"
+    }
+  ]
+}

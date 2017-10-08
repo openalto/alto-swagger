@@ -1,0 +1,220 @@
+{
+  "swaggerVersion": "1.2",
+  "apiVersion": "0.1.1-oas1.2",
+  "info": {
+    "title": "Unicorn API",
+    "description": "Cross-domain path and resource discovery"
+  },
+  "basePath": "http://snlab.org:8080/v1/unicorn",
+  "resourcePath": "/query",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/query/path",
+      "operations": [
+        {
+          "method": "POST",
+          "notes": "query the ingress point of the next domain",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "querySet",
+              "description": "a set of path queries",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "QueryDesc"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|$"
+            }
+          },
+          "responseMessages": [
+            {
+              "code": 400,
+              "message": "error when query path",
+              "responseModel": "ErrorResponse"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/query/resource",
+      "operation": [
+        {
+          "method": "POST",
+          "notes": "query the resource availability of the current domain for a given set of flows",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "querySet",
+              "description": "a set of resource queries",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "QueryDesc"
+              }
+            }
+          ],
+          "type": "ResourceQueryResponse",
+          "responseMessages": [
+            {
+              "code": 400,
+              "message": "error when query resource",
+              "responseModel": "ErrorResponse"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "FlowSpec": {
+      "id": "FlowSpec",
+      "required": [
+        "dstIP"
+      ],
+      "properties": {
+        "dstIP": {
+          "type": "string",
+          "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|$"
+        },
+        "srcIP": {
+          "type": "string",
+          "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|$"
+        },
+        "srcPort": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "dstPort": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "protocol": {
+          "type": "string"
+        }
+      }
+    },
+    "QueryDesc": {
+      "id": "QueryDesc",
+      "required": [
+        "flow",
+        "ingress-point"
+      ],
+      "properties": {
+        "flow": {
+          "type": "FlowSpec"
+        },
+        "ingress-point": {
+          "type": "string",
+          "pattern": "^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|$"
+        }
+      }
+    },
+    "ANE": {
+      "id": "ANE",
+      "required": [
+        "availbw"
+      ],
+      "properties": {
+        "availbw": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ANEFlowCoefficient": {
+      "id": "ANEFlowCoefficient",
+      "required": [
+        "flowid",
+        "coefficient"
+      ],
+      "properties": {
+        "flowid": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "coefficient": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "ResourceQueryResponse": {
+      "id": "ResourceQueryResponse",
+      "required": [
+        "ane-matrix",
+        "anes"
+      ],
+      "properties": {
+        "ane-matrix": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "ANEFlowCoefficient"
+            }
+          }
+        },
+        "anes": {
+          "type": "array",
+          "items": {
+            "type": "ANE"
+          }
+        }
+      }
+    },
+    "ErrorResponse": {
+      "id": "ErrorResponse",
+      "properties": {
+        "meta": {
+          "properties": {
+            "code": {
+              "type": "string",
+              "enum": [
+                "E_SYNTAX",
+                "E_MISSING_FIELD",
+                "E_INVALID_FIELD_TYPE",
+                "E_INVALID_FIELD_VALUE"
+              ]
+            },
+            "message": {
+              "description": "Provides the details of the error",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code"
+          ],
+          "type": "object"
+        }
+      }
+    }
+  }
+}
