@@ -7,7 +7,7 @@
   },
   "apis": [
     {
-      "path": "/query.json",
+      "path": "https://github.com/openalto/alto-swagger/raw/spec/api/ext/1.2/query.json",
       "description": "Operations about path query and resource query"
     }
   ]
