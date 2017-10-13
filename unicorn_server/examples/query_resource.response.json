@@ -1,0 +1,28 @@
+{
+  "ane-matrix": [
+    [
+      {
+        "flow-id": 0,
+        "coefficient": 0.3
+      },
+      {
+        "flow-id": 1,
+        "coefficient": 1
+      }
+    ],
+    [
+      {
+        "flow-id": 0,
+        "coefficient": 0.7
+      }
+    ]
+  ],
+  "anes": [
+    {
+      "availbw": 1000000
+    },
+    {
+      "availbw": 700000
+    }
+  ]
+}

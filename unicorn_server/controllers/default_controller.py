@@ -1,6 +1,9 @@
+import os
+import json
 import connexion
 from unicorn_server.models.query_desc import QueryDesc
 
+basedir = os.path.join(os.path.dirname(__file__), '..')
 
 def query_path(query_set):
     """
@@ -13,7 +16,8 @@ def query_path(query_set):
     """
     if connexion.request.is_json:
         query_set = [QueryDesc.from_dict(d) for d in connexion.request.get_json()]
-    return 'do some magic!'
+    # do some magic!
+    return json.load(open(os.path.join(basedir, 'examples/query_path.response.json')))
 
 
 def query_resource(query_set):
@@ -27,4 +31,5 @@ def query_resource(query_set):
     """
     if connexion.request.is_json:
         query_set = [QueryDesc.from_dict(d) for d in connexion.request.get_json()]
-    return 'do some magic!'
+    # do some magic!
+    return json.load(open(os.path.join(basedir, 'examples/query_resource.response.json')))
