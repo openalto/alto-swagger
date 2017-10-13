@@ -1,0 +1,6 @@
+{
+  "packageVersion": "0.1.1",
+  "packageName": "unicorn_server",
+  "defaultController": "unicorn",
+  "serverPort": 9000
+}
