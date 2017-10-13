@@ -11,28 +11,61 @@ info:
     email: snlab.org@gmail.com
 paths: {}
 definitions:
-  ResourceProperty:
+  ANE:
+    type: object
     required:
     - availbw
     properties:
       availbw:
         type: integer
-  ResourceQueryRequest:
+        format: int32
+      example:
+        availbw: 1000000
+  ANEFlowCoefficient:
+    type: object
     required:
-    - queries
+    - flow-id
     properties:
-      queries:
-        type: array
-        items:
-          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/basic.yaml#/definitions/QueryDesc"
+      flow-id:
+        type: integer
+        format: int32
+      coefficient:
+        type: number
+        format: double
+    example:
+      flow-id: 0
+      coefficient: 0.5
+  ANEFlowVector:
+    type: array
+    items:
+      $ref: "#/definitions/ANEFlowCoefficient"
+    example:
+    - flow-id: 0
+      coefficient: 0.5
+    - flow-id: 1
+      coefficient: 1
   ResourceQueryResponse:
+    type: object
     required:
-      - ane-paths
-      - ane-property
+    - ane-matrix
+    - anes
     properties:
-      ane-paths:
-        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/basic.yaml#/definitions/VectorArray"
-      ane-property:
+      ane-matrix:
         type: array
         items:
-          $ref: "#/definitions/ResourceProperty"
+          $ref: "#/definitions/ANEFlowVector"
+      anes:
+        type: array
+        items:
+          $ref: "#/definitions/ANE"
+      example:
+        ane-matrix:
+        - - flow-id: 1
+            coefficient: 0.5
+          - flow-id: 2
+            coefficient: 1
+        - - flow-id: 1
+            coefficient: 0.5
+        anes:
+        - availbw: 1000000
+        - availbw: 700000
