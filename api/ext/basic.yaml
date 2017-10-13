@@ -32,6 +32,12 @@ definitions:
         format: int32
         minimum: 0
         maximum: 65535
+      protocol:
+        type: string
+        enum:
+        - tcp
+        - udp
+        - sctp
   QueryDesc:
     type: object
     required:
