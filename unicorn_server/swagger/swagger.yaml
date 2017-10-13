@@ -46,7 +46,7 @@ paths:
           description: "Error"
           schema:
             $ref: "#/definitions/Error"
-      x-swagger-router-controller: "unicorn_server.controllers.default_controller"
+      x-swagger-router-controller: "unicorn_server.controllers.{{ controller }}"
   /ext/query/resource:
     post:
       description: "Returns resource state abstraction in simple mode"
@@ -74,7 +74,7 @@ paths:
           description: "Error"
           schema:
             $ref: "#/definitions/Error"
-      x-swagger-router-controller: "unicorn_server.controllers.default_controller"
+      x-swagger-router-controller: "unicorn_server.controllers.{{ controller }}"
 definitions:
   QueryDesc:
     type: "object"

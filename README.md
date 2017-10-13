@@ -20,7 +20,11 @@ To run the server, please execute the following from the root directory:
 
 ```
 pip3 install -r requirements.txt
+# start a mock server by default
 python3 -m unicorn_server
+
+# you can specify a controller as backend
+python3 -m unicorn_server -B kytos
 ```
 
 and open your browser to here:
