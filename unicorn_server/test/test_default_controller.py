@@ -2,13 +2,9 @@
 
 from __future__ import absolute_import
 
-from unicorn_server.models.error import Error
-from unicorn_server.models.path_query_response import PathQueryResponse
 from unicorn_server.models.query_desc import QueryDesc
 from unicorn_server.models.flow_spec import FlowSpec
-from unicorn_server.models.resource_query_response import ResourceQueryResponse
 from . import BaseTestCase
-from six import BytesIO
 from flask import json
 
 
