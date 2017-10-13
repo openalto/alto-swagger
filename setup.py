@@ -1,9 +1,8 @@
 # coding: utf-8
 
-import sys
 from setuptools import setup, find_packages
 
-NAME = "swagger_server"
+NAME = "unicorn_server"
 VERSION = "0.1.1"
 
 # To install the library, run the following

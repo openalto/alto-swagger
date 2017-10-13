@@ -1,6 +1,7 @@
 # Swagger generated server
 
-> **NOTE:** Check the OpenAPI specification in [[spec branch](https://github.com/openalto/alto-swagger/tree/spec)].
+> **NOTE:** Check the OpenAPI specification in
+[![branch spec](https://img.shields.io/badge/branch-spec-blue.svg)](https://github.com/openalto/alto-swagger/tree/spec).
 
 [![Travis status](https://img.shields.io/travis/openalto/alto-swagger.svg)](https://travis-ci.org/openalto/alto-swagger)
 
@@ -50,4 +51,18 @@ docker build -t unicorn_server .
 
 # starting up a container
 docker run -p 9000:9000 unicorn_server
+```
+
+## For Developer
+
+If you modified the api specification, you can run `make` from the root
+directory to regenerate the model files:
+
+```bash
+# run make directly will download swagger-codegen to .bin
+make
+
+# or you can specify the exec path of your existing swagger-codegen to void
+# downloading the binary of swagger-codegen
+SWAGGER_EXEC=swagger-codegen make
 ```
