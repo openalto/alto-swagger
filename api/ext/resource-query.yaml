@@ -35,15 +35,6 @@ definitions:
     example:
       flow-id: 0
       coefficient: 0.5
-  ANEFlowVector:
-    type: array
-    items:
-      $ref: "#/definitions/ANEFlowCoefficient"
-    example:
-    - flow-id: 0
-      coefficient: 0.5
-    - flow-id: 1
-      coefficient: 1
   ResourceQueryResponse:
     type: object
     required:
@@ -53,7 +44,9 @@ definitions:
       ane-matrix:
         type: array
         items:
-          $ref: "#/definitions/ANEFlowVector"
+          type: array
+          items:
+            $ref: "#/definitions/ANEFlowCoefficient"
       anes:
         type: array
         items:

@@ -34,7 +34,12 @@ paths:
         name: query-set
         required: true
         schema:
-          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/basic.yaml#/definitions/QueryRequests"
+          type: array
+          description: >
+            each item provides the specifications of a flow and from where it will
+            enter the current domain.
+          items:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/basic.yaml#/definitions/QueryDesc"
       responses:
         200:
           description: Success
@@ -57,7 +62,12 @@ paths:
         in: body
         required: true
         schema:
-          $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/basic.yaml#/definitions/QueryRequests"
+          type: array
+          description: >
+            each item provides the specifications of a flow and from where it will
+            enter the current domain.
+          items:
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/ext/basic.yaml#/definitions/QueryDesc"
       responses:
         200:
           description: Success
