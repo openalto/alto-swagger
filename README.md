@@ -11,6 +11,9 @@
 - [api/ext/unicorn.yaml](https://github.com/openalto/alto-swagger/raw/spec/api/ext/unicorn.yaml) is
   the entry swagger file of the Unicorn extended protocol for cross-domain
   purpose.
+- [api/ext/unicorn-standalone.yaml](https://github.com/openalto/alto-swagger/raw/spec/api/ext/unicorn-standalone.yaml)
+  is a single swagger specification file which combines all references of
+  `api/ext/unicorn.yaml`.
 - [api/ext/1.2/unicorn.json](https://github.com/openalto/alto-swagger/raw/spec/api/ext/1.2/unicorn.json)
   is the resource listing file of the Unicorn extended protocol on Swagger
   Specification 1.2.
