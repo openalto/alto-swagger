@@ -13,7 +13,7 @@ def query_path(query_set):
     """
     if connexion.request.is_json:
         query_set = [QueryDesc.from_dict(d) for d in connexion.request.get_json()]
-    return 'implement odl adapter here!'
+    return 'implement kytos adapter here!'
 
 
 def query_resource(query_set):
@@ -27,4 +27,4 @@ def query_resource(query_set):
     """
     if connexion.request.is_json:
         query_set = [QueryDesc.from_dict(d) for d in connexion.request.get_json()]
-    return 'implement odl adapter here!'
+    return 'implement kytos adapter here!'
