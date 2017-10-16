@@ -65,3 +65,6 @@ target/
 
 # Utility binary
 .bin/
+
+# Backup files
+*.bak
