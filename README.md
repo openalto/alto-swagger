@@ -20,11 +20,35 @@ To run the server, please execute the following from the root directory:
 
 ```
 pip3 install -r requirements.txt
+
 # start a mock server by default
 python3 -m unicorn_server
 
 # you can specify a controller as backend
-python3 -m unicorn_server -B kytos
+python3 -m unicorn_server -B kytos -s config/settings.py
+
+# check the detailed usage
+python3 -m unicorn_server --help
+
+usage: __main__.py [-h] [-B {mock,odl,kytos}] [-a ADDRESS] [-p PORT] [-A AUTH]
+                   [-k] [-s SETTINGS]
+
+Unicorn Domain Manager.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -B {mock,odl,kytos}, --backend {mock,odl,kytos}
+                        set backend controller.
+  -a ADDRESS, --addr ADDRESS
+                        ip address of the backend controller (default:
+                        localhost).
+  -p PORT, --port PORT  tcp port the backend controller REST API will listen
+                        on (default: 8181).
+  -A AUTH, --auth AUTH  the authentication of the backend controller REST API.
+  -k, --secure          use HTTPS to talk to REST API of the backend
+                        controller.
+  -s SETTINGS, --settings SETTINGS
+                        import a python file as extra settings.
 ```
 
 and open your browser to here:

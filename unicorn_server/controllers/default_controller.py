@@ -15,7 +15,8 @@ class AdapterTalker:
     Factory class for backend adapter.
     """
     @classmethod
-    def set_backend_adapter(cls, backend='mock', url='http://localhost:8181', auth=None):
+    def set_backend_adapter(cls, backend='mock', url='http://localhost:8181',
+                            auth=None, settings=None):
         global __Adapter
         if 'mock' == backend:
             __Adapter = Adapter(url, auth)

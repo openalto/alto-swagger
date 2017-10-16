@@ -6,7 +6,7 @@ import requests
 
 from pprint import pprint
 from unicorn_server.models.query_desc import QueryDesc
-from unicorn_server import settings
+# from unicorn_server import settings
 from unicorn_server.controllers.mock_adapter import Adapter
 
 class KytosAdapter(Adapter):
@@ -68,6 +68,10 @@ class KytosAdapter(Adapter):
 
         :rtype: ResourceQueryResponse
         """
+        settings = self.settings
+        if not settings:
+            import kytos_default_settings as settings
+
         if connexion.request.is_json:
             query_set = [QueryDesc.from_dict(d) for d in connexion.request.get_json()]
             all_links = self.get_links_kytos()
@@ -129,6 +133,10 @@ class KytosAdapter(Adapter):
 
     def get_links_kytos(self):
         '''get all the links in the network'''
+        settings = self.settings
+        if not settings:
+            import kytos_default_settings as settings
+
         topology = requests.get(settings.KYTOS_API_SERVER+settings.KYTOS_TOPO_API_PATH)
         topology_json = json.loads(topology.text)
         links = [{settings.UNICORN_LINK_SRC: link[settings.KYTOS_LINK_SRC],
@@ -143,6 +151,10 @@ class KytosAdapter(Adapter):
 
     def get_links_from_route(self, query):
         '''TODO: depend on the routing system implementation'''
+        settings = self.settings
+        if not settings:
+            import kytos_default_settings as settings
+
         settings.turn = (settings.turn + 1) % 2
         return settings.routes[settings.turn]
 

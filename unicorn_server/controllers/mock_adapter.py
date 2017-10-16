@@ -11,22 +11,24 @@ class Adapter:
         """
         Singleton instance of controller.
         """
-        def __init__(self, url='http://localhost:8181', auth=None):
+        def __init__(self, url='http://localhost:8181', auth=None, settings=None):
             """Abstract init function"""
             self.url = url
             self.auth = auth
+            self.settings = settings
             self.get_as_path = Adapter.get_as_path
             self.get_resource = Adapter.get_resource
 
     controller = None
 
-    def __init__(self, url='http://localhost:8181', auth=None):
+    def __init__(self, url='http://localhost:8181', auth=None, settings=None):
         """Init function"""
         if not Adapter.controller:
-            Adapter.controller = Adapter.__Controller(url, auth)
+            Adapter.controller = Adapter.__Controller(url, auth, settings)
         else:
             Adapter.controller.url = url
             Adapter.controller.auth = auth
+            Adapter.controller.settings = settings
             Adapter.controller.get_as_path = self.get_as_path
             Adapter.controller.get_resource = self.get_resource
 

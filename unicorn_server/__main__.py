@@ -2,6 +2,7 @@
 
 import argparse
 import connexion
+import importlib.util
 from .encoder import JSONEncoder
 from .controllers.default_controller import AdapterTalker
 
@@ -25,8 +26,10 @@ def parse_argument():
     parser.add_argument('-A', '--auth', dest='auth',
                         default='', type=str,
                         help='the authentication of the backend controller REST API.')
-    parser.add_argument('-s', '--secure', dest='secure', action='store_true',
+    parser.add_argument('-k', '--secure', dest='secure', action='store_true',
                         help='use HTTPS to talk to REST API of the backend controller.')
+    parser.add_argument('-s', '--settings', dest='settings', type=str,
+                        help='import a python file as extra settings.')
     args = parser.parse_args()
     return args
 
@@ -38,15 +41,18 @@ def setup_controller(args):
     auth = None
     if args.auth:
         auth = tuple(args.auth.split(':'))
+    settings = None
+    if args.settings:
+        spec = importlib.util.spec_from_file_location('.settings', args.settings)
+        settings = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(settings)
 
-    return AdapterTalker.set_backend_adapter(args.backend, url, auth)
+    return AdapterTalker.set_backend_adapter(args.backend, url, auth, settings=settings)
 
 if __name__ == '__main__':
     args = parse_argument()
     app = connexion.App(__name__, specification_dir='./swagger/')
     app.app.json_encoder = JSONEncoder
-    # print(__Adapter.controller.url, __Adapter.controller.auth, __Adapter.controller.get_as_path)
     setup_controller(args)
-    # print(__Adapter.controller.url, __Adapter.controller.auth, __Adapter.controller.get_as_path)
     app.add_api('swagger.yaml', arguments={'controller': 'default_controller'})
     app.run(port=9000, threaded=True)
