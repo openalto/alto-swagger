@@ -201,6 +201,7 @@ definitions:
         - "E_MISSING_FIELD"
         - "E_INVALID_FIELD_TYPE"
         - "E_INVALID_FIELD_VALUE"
+        - "E_UNKNOWN"
       message:
         type: "string"
         description: "Provides the details of the error"

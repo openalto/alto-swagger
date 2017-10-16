@@ -64,7 +64,7 @@ class ErrorMeta(Model):
         :param code: The code of this ErrorMeta.
         :type code: str
         """
-        allowed_values = ["E_SYNTAX", "E_MISSING_FIELD", "E_INVALID_FIELD_TYPE", "E_INVALID_FIELD_VALUE"]
+        allowed_values = ["E_SYNTAX", "E_MISSING_FIELD", "E_INVALID_FIELD_TYPE", "E_INVALID_FIELD_VALUE", "E_UNKNOWN"]
         if code not in allowed_values:
             raise ValueError(
                 "Invalid value for `code` ({0}), must be one of {1}"
