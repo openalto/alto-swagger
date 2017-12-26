@@ -11,10 +11,19 @@ info:
     email: snlab.org@gmail.com
 paths: {}
 definitions:
+  ResourceID:
+    pattern: ^[0-9a-zA-Z-:@_\.]{1,64}$
+    type: string
+  CostMetric:
+    pattern: ^[0-9a-zA-Z-:@_\.]{1,64}$
+    type: string
+  CostMode:
+    type: string
+    enum: ["numerical", "ordinal", "array"]
   Vtag:
     properties:
       resource-id:
-        type: string
+        $ref: "#/definition/ResourceID"
       tag:
         type: string
     required:
@@ -36,10 +45,10 @@ definitions:
     properties:
       cost-metric:
         id: /alto/types/cost-type/properties/cost-metric
-        type: string
+        $ref: "#/definition/CostMetric"
       cost-mode:
         id: /alto/types/cost-type/properties/cost-mode
-        type: string
+        $ref: "#/definition/CostMode"
     required:
     - cost-mode
     - cost-metric
