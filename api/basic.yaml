@@ -19,10 +19,6 @@ definitions:
     type: string
   CostMode:
     type: string
-    enum:
-    - numerical
-    - ordinal
-    - array
   Vtag:
     properties:
       resource-id:
