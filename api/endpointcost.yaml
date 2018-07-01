@@ -14,16 +14,16 @@ definitions:
   Request:
     properties:
       constraints:
-        $ref: "https://github.com/openalto/alto-swagger/raw/spec/apibasic.yaml#/Constraints"
+        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Constraints"
       cost-type:
-        $ref: "https://github.com/openalto/alto-swagger/raw/spec/apibasic.yaml#/CostType"
+        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/CostType"
       endpoints:
         id: /properties/endpoints
         properties:
           dsts:
-            $ref: "https://github.com/openalto/alto-swagger/raw/spec/apibasic.yaml#/Endpoints"
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Endpoints"
           srcs:
-            $ref: "https://github.com/openalto/alto-swagger/raw/spec/apibasic.yaml#/Endpoints"
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/Endpoints"
         required:
         - srcs
         - dsts
@@ -48,7 +48,7 @@ definitions:
         id: /properties/meta
         properties:
           cost-type:
-            $ref: "https://github.com/openalto/alto-swagger/raw/spec/apibasic.yaml#/CostType"
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/CostType"
         required:
         - cost-type
         type: object

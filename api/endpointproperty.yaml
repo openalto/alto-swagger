@@ -14,7 +14,7 @@ definitions:
   Request:
     properties:
       endpoints:
-        $ref: "https://github.com/openalto/alto-swagger/raw/spec/apibasic.yaml#/definitions/Endpoints"
+        $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/Endpoints"
       properties:
         id: /properties/properties
         items:
@@ -43,7 +43,7 @@ definitions:
         id: /properties/meta
         properties:
           dependent-vtags:
-            $ref: "https://github.com/openalto/alto-swagger/raw/spec/apibasic.yaml#/definitions/DependentVtags"
+            $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/basic.yaml#/definitions/DependentVtags"
         required:
         - dependent-vtags
         type: object
