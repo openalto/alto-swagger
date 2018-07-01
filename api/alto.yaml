@@ -44,7 +44,7 @@ paths:
             $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/definitions/Error"
     post:
       description: Reterns the networkmap data by given resource id and a filter
-      operationId: networkmap
+      operationId: filterednetworkmap
       consumes:
       - application/alto-networkmapfilter+json
       produces:
@@ -90,7 +90,7 @@ paths:
             $ref: "https://github.com/openalto/alto-swagger/raw/spec/api/error.yaml#/definitions/Error"
     post:
       description: Reterns the costmap data by given resource id and a filter
-      operationId: costmap
+      operationId: filteredcostmap
       consumes:
       - application/alto-costmapfilter+json
       produces:
